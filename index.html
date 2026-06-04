@@ -1078,30 +1078,38 @@ h1.hero-h {
   .hero-right { display: none; }
   .story-outer {
     display: flex; flex-direction: column;
-    padding: 0 24px; gap: 0;
+    padding: 0 16px; gap: 0;
+    max-width: 100%;
   }
-  .story-col-l { padding: 0; }
+  .story-col-l { padding: 0; width: 100%; }
   .story-col-r {
     order: -1;
     position: sticky;
-    top: 76px;
+    top: 70px;
     height: auto;
-    padding: 8px 0 16px;
+    padding: 8px 0 14px;
+    width: 100%;
     display: flex; justify-content: center; align-items: flex-start;
     z-index: 5;
-    background: var(--bg, #fff);
+    background: #fff;
   }
   .pw {
-    width: 100%;
-    max-width: 320px;
-    min-height: 440px;
+    width: 88%;
+    max-width: 340px;
+    min-height: 340px;
     margin: 0 auto;
   }
+  .panel { padding: 16px; top: 44px; }
+  .call-ring { transform: scale(.78); transform-origin: top center; }
   .step {
-    padding: 40vh 0 40vh;
-    min-height: 60vh;
+    padding: 18vh 0;
+    min-height: 0;
+    opacity: 1;
   }
-  .step:first-child { padding-top: 20px; }
+  .step.on { transform: translateX(0); }
+  .step:first-child { padding-top: 24px; }
+  .step:last-child { padding-bottom: 24px; }
+  .step-desc { opacity: 1; }
   .feat-grid { grid-template-columns: 1fr; }
   .import-layout { grid-template-columns: 1fr; gap: 40px; }
   .plat-layout { grid-template-columns: 1fr; }
@@ -1973,10 +1981,24 @@ function activate(i) {
   if (titles[i]) pwTitle.textContent = titles[i];
 }
 activate(0);
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) activate(parseInt(e.target.dataset.idx)); });
-}, { threshold: 0.5, rootMargin: '-20% 0px -30% 0px' });
-steps.forEach(s => io.observe(s));
+const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
+let io;
+function buildObserver() {
+  if (io) io.disconnect();
+  const opts = isMobile()
+    ? { threshold: 0, rootMargin: '-60% 0px -25% 0px' }
+    : { threshold: 0.5, rootMargin: '-20% 0px -30% 0px' };
+  io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) activate(parseInt(e.target.dataset.idx)); });
+  }, opts);
+  steps.forEach(s => io.observe(s));
+}
+buildObserver();
+let resizeT;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeT);
+  resizeT = setTimeout(buildObserver, 150);
+});
 
 // ── REVEAL ON SCROLL ─────────────────────────────
 const reveals = document.querySelectorAll('.reveal, .reveal-fade, .reveal-slide-l, .reveal-slide-r, .reveal-rotate, .reveal-scale');
