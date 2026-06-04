@@ -1076,10 +1076,22 @@ h1.hero-h {
     gap: 40px; min-height: auto;
   }
   .hero-right { display: none; }
-  .story-outer { grid-template-columns: 1fr; padding: 0 24px; gap: 0; }
-  .story-col-r { position: relative; height: auto; padding: 24px 0 40px; }
-  .panel { position: relative; top: 0; opacity: 1; pointer-events: auto; }
-  .panel:not(:first-child) { display: none; }
+  .story-outer {
+    display: flex; flex-direction: column;
+    padding: 0 24px; gap: 0;
+  }
+  .story-col-l { padding: 20px 0 60px; }
+  .story-col-r {
+    order: -1;
+    position: sticky;
+    top: 70px;
+    height: auto;
+    padding: 12px 0;
+    z-index: 2;
+    background: transparent;
+  }
+  .pw { max-width: 360px; min-height: 380px; margin: 0 auto; }
+  .step { padding: 36vh 0; }
   .feat-grid { grid-template-columns: 1fr; }
   .import-layout { grid-template-columns: 1fr; gap: 40px; }
   .plat-layout { grid-template-columns: 1fr; }
