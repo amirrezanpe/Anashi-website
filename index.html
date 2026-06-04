@@ -1080,18 +1080,28 @@ h1.hero-h {
     display: flex; flex-direction: column;
     padding: 0 24px; gap: 0;
   }
-  .story-col-l { padding: 20px 0 60px; }
+  .story-col-l { padding: 0; }
   .story-col-r {
     order: -1;
     position: sticky;
-    top: 70px;
+    top: 76px;
     height: auto;
-    padding: 12px 0;
-    z-index: 2;
-    background: transparent;
+    padding: 8px 0 16px;
+    display: flex; justify-content: center; align-items: flex-start;
+    z-index: 5;
+    background: var(--bg, #fff);
   }
-  .pw { max-width: 360px; min-height: 380px; margin: 0 auto; }
-  .step { padding: 36vh 0; }
+  .pw {
+    width: 100%;
+    max-width: 320px;
+    min-height: 440px;
+    margin: 0 auto;
+  }
+  .step {
+    padding: 40vh 0 40vh;
+    min-height: 60vh;
+  }
+  .step:first-child { padding-top: 20px; }
   .feat-grid { grid-template-columns: 1fr; }
   .import-layout { grid-template-columns: 1fr; gap: 40px; }
   .plat-layout { grid-template-columns: 1fr; }
