@@ -318,3 +318,90 @@ nav.scrolled {
 @media (max-width: 560px) {
   .footer-grid { grid-template-columns: 1fr; }
 }
+
+/* ── LEVEL 4 POLISH: PRO EFFECTS ─────────────── */
+
+/* Blur-in upgrade for scroll reveals */
+.reveal {
+  filter: blur(8px);
+  transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1), filter .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal.in { filter: blur(0); }
+.reveal-slide-l, .reveal-slide-r {
+  filter: blur(6px);
+  transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1), filter .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal-slide-l.in, .reveal-slide-r.in { filter: blur(0); }
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed; top: 0; left: 0;
+  height: 3px; width: 0%;
+  background: var(--grad);
+  z-index: 500;
+  box-shadow: 0 0 10px rgba(0,198,255,.6);
+  transition: width .1s linear;
+  pointer-events: none;
+}
+
+/* Smart nav — hides on scroll down, returns on scroll up */
+nav { transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .3s ease, background .3s ease; }
+nav.nav-hide { transform: translateY(-100%); }
+
+/* Back-to-top button */
+.back-top {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--grad); color: #fff;
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 28px rgba(0,114,255,.45);
+  opacity: 0; transform: translateY(18px) scale(.85);
+  pointer-events: none;
+  transition: opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
+  z-index: 400;
+}
+.back-top.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.back-top:hover { transform: translateY(-4px) scale(1.05); }
+
+/* Sheen sweep on primary buttons */
+.btn-hero-a, .btn-nav-primary, .cta-btn-a, .roi-cta-btn, .found-visual-cta, .btn-import {
+  position: relative; overflow: hidden;
+}
+.btn-hero-a::after, .btn-nav-primary::after, .cta-btn-a::after,
+.roi-cta-btn::after, .found-visual-cta::after, .btn-import::after {
+  content: ''; position: absolute; top: 0; left: -80%;
+  width: 45%; height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,.5), transparent);
+  transform: skewX(-20deg);
+  transition: left .65s ease;
+  pointer-events: none;
+}
+.btn-hero-a:hover::after, .btn-nav-primary:hover::after, .cta-btn-a:hover::after,
+.roi-cta-btn:hover::after, .found-visual-cta:hover::after, .btn-import:hover::after { left: 135%; }
+
+/* Animated gradient shimmer for headline accents */
+@keyframes gradShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.shimmer {
+  background-size: 220% auto;
+  animation: gradShift 5s ease-in-out infinite;
+}
+
+/* Gentle float loop for decorative cards */
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Reduced motion: respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal-fade, .reveal-slide-l, .reveal-slide-r, .reveal-rotate, .reveal-scale {
+    opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important;
+  }
+  .shimmer { animation: none; }
+  nav.nav-hide { transform: none; }
+}

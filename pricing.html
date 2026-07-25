@@ -3,33 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plans — Anashi</title>
-<meta name="description" content="Anashi plans for medical clinics. Demo-first pricing tailored to your call volume, workflow, and clinic needs.">
-<link rel="canonical" href="https://anashi.ai/pricing">
-<link rel="icon" type="image/png" href="/anashi-favicon.png">
-
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Anashi">
-<meta property="og:url" content="https://anashi.ai/pricing">
-<meta property="og:title" content="Plans — Anashi">
-<meta property="og:description" content="Anashi plans for medical clinics. Demo-first pricing tailored to your call volume, workflow, and clinic needs.">
-<meta property="og:image" content="https://anashi.ai/social-preview-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Anashi — AI Front Desk for Medical Clinics">
-
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://anashi.ai/pricing">
-<meta name="twitter:title" content="Plans — Anashi">
-<meta name="twitter:description" content="Anashi plans for medical clinics. Demo-first pricing tailored to your call volume, workflow, and clinic needs.">
-<meta name="twitter:image" content="https://anashi.ai/social-preview-image.jpg">
-<meta name="twitter:image:alt" content="Anashi — AI Front Desk for Medical Clinics">
+<title>Plans &amp; Pricing — Anashi AI Front Desk | From $399/month</title>
+<meta name="description" content="Anashi plans for medical & dental clinics start at $399/month. Transparent, demo-first pricing tailored to your call volume — 2–3 recovered patients a month typically cover the plan.">
+<link rel="icon" type="image/png" href="anashi-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="styles.css">
 <style>
 /* ── HERO ─────────────────────────────────── */
 #p-hero {
@@ -140,7 +120,7 @@ td { padding: 13px 20px; font-size: 13px; color: var(--g700); vertical-align: mi
 td:first-child { font-weight: 500; color: var(--text); }
 .check-y { color: var(--blue); display: inline-flex; align-items: center; }
 .addon-tag { font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 100px; background: #eff6ff; color: #1d4ed8; }
-.highlight-col { background: transparent; }
+.highlight-col { background: #f0f9ff; }
 
 /* ── ADD-ONS ──────────────────────────────── */
 #addons { padding: 100px 0; background: var(--g50); border-top: 1px solid var(--g100); border-bottom: 1px solid var(--g100); }
@@ -222,14 +202,17 @@ td:first-child { font-weight: 500; color: var(--text); }
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
+
+
 <!-- NAV -->
 <nav id="nav">
-  <a href="/" class="nav-logo"><img src="/anashi-logo.png" alt="Anashi"></a>
+  <a href="index.html" class="nav-logo"><img src="anashi-logo.png" alt="Anashi"></a>
   <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/pricing" class="active">Plans</a>
-    <a href="/about">About</a>
-    <a href="/#features">Features</a>
+    <a href="index.html">Home</a>
+    <a href="pricing.html" class="active">Plans</a>
+    <a href="about.html">About</a>
+    <a href="index.html#features">Features</a>
   </div>
   <div class="nav-ctas">
     <a href="https://www.nashboss.com/anashi-fomrs" target="_blank" rel="noopener" class="btn-nav-primary">Request a Demo</a>
@@ -239,10 +222,10 @@ td:first-child { font-weight: 500; color: var(--text); }
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/">Home</a>
-  <a href="/pricing">Plans</a>
-  <a href="/about">About</a>
-  <a href="/#features">Features</a>
+  <a href="index.html">Home</a>
+  <a href="pricing.html">Plans</a>
+  <a href="about.html">About</a>
+  <a href="index.html#features">Features</a>
   <a href="https://www.nashboss.com/anashi-fomrs" target="_blank" rel="noopener" class="btn-nav-primary">Request a Demo</a>
 </div>
 
@@ -258,6 +241,11 @@ td:first-child { font-weight: 500; color: var(--text); }
     <div class="pa-note">Call volume, integrations, and add-ons affect your final plan. We'll send a custom proposal after your demo.</div>
   </div>
 
+  <p class="setup-note reveal d1" style="margin-top:14px">
+    <svg class="setup-note-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+    <strong>The math:</strong>&nbsp;at industry-average appointment values, recovering just 2–3 missed patients a month covers the plan. <a href="index.html#roi" style="color:var(--blue);font-weight:600;text-decoration:none">Run your clinic's numbers →</a>
+  </p>
+
   <p class="setup-note reveal d1">
     <svg class="setup-note-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
     A one-time onboarding fee covers AI configuration, workflow setup, knowledge base build, and launch support — quoted with your proposal.
@@ -268,7 +256,7 @@ td:first-child { font-weight: 500; color: var(--text); }
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
       Request a Demo
     </a>
-    <a href="/about#contact" class="btn-hero-b">
+    <a href="about.html#contact" class="btn-hero-b">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       Talk to Sales
     </a>
@@ -380,7 +368,7 @@ td:first-child { font-weight: 500; color: var(--text); }
           <li style="color:rgba(255,255,255,.8)"><svg class="pf-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>BAA + compliance review</li>
           <li style="color:rgba(255,255,255,.8)"><svg class="pf-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Dedicated support + SLA</li>
         </ul>
-        <a href="/about#contact" class="pkg-cta pkg-cta-dark">Contact Us</a>
+        <a href="about.html#contact" class="pkg-cta pkg-cta-dark">Contact Us</a>
       </div>
     </div>
   </div>
@@ -556,7 +544,7 @@ td:first-child { font-weight: 500; color: var(--text); }
         <div class="sec-ey">FAQ</div>
         <h2 class="sec-h" style="font-size:clamp(24px,2.5vw,36px)">Questions we<br>hear every time.</h2>
         <p class="faq-left-sub">Can't find what you're looking for? We're happy to walk you through anything on a call.</p>
-        <a href="/about#contact" class="faq-contact-link">Talk to us →</a>
+        <a href="about.html#contact" class="faq-contact-link">Talk to us →</a>
       </div>
 
       <div class="faq-list reveal-slide-r d1">
@@ -601,7 +589,7 @@ td:first-child { font-weight: 500; color: var(--text); }
     <p class="cta-sub">Request a demo and we'll walk you through the right plan for your clinic — then send a clear proposal before you commit to anything.</p>
     <div class="cta-btns">
       <a href="https://www.nashboss.com/anashi-fomrs" target="_blank" rel="noopener" class="cta-btn-a">Request a Demo</a>
-      <a href="/about#contact" class="cta-btn-b">Talk to Sales</a>
+      <a href="about.html#contact" class="cta-btn-b">Talk to Sales</a>
     </div>
     <p class="cta-small">No online checkout. No commitment until you're ready. Personalized proposal included.</p>
   </div>
@@ -611,21 +599,21 @@ td:first-child { font-weight: 500; color: var(--text); }
 <footer class="footer-outer">
   <div class="footer-grid">
     <div>
-      <a href="/" class="foot-brand-logo"><img src="/anashi-logo.png" alt="Anashi"></a>
+      <a href="index.html" class="foot-brand-logo"><img src="anashi-logo.png" alt="Anashi"></a>
       <p class="foot-brand-desc">AI-powered front desk for medical clinics. Answer calls, confirm appointments, and organize patient communication in one dashboard.</p>
-      <div class="foot-brand-meta">Roseville, California &middot; <a href="mailto:info@NashBoss.com">info@NashBoss.com</a></div>
+      <div class="foot-brand-meta">Roseville, California &middot; <a href="mailto:info@anashi.ai">info@anashi.ai</a></div>
     </div>
     <div>
       <div class="foot-col-title">Product</div>
-      <div class="foot-col-links"><a href="/">Home</a><a href="/pricing">Plans</a><a href="/#features">Features</a><a href="/#story">How It Works</a></div>
+      <div class="foot-col-links"><a href="index.html">Home</a><a href="pricing.html">Plans</a><a href="index.html#features">Features</a><a href="index.html#story">How It Works</a></div>
     </div>
     <div>
       <div class="foot-col-title">Company</div>
-      <div class="foot-col-links"><a href="/about">About</a><a href="/about#contact">Contact</a><a href="https://www.nashboss.com" target="_blank" rel="noopener">NashBoss Inc</a></div>
+      <div class="foot-col-links"><a href="about.html">About</a><a href="about.html#contact">Contact</a><a href="https://www.nashboss.com" target="_blank" rel="noopener">NashBoss Inc</a></div>
     </div>
     <div>
       <div class="foot-col-title">Get Started</div>
-      <div class="foot-col-links"><a href="https://www.nashboss.com/anashi-fomrs" target="_blank" rel="noopener">Request a Demo</a><a href="/about#contact">Talk to Sales</a></div>
+      <div class="foot-col-links"><a href="https://www.nashboss.com/anashi-fomrs" target="_blank" rel="noopener">Request a Demo</a><a href="about.html#contact">Talk to Sales</a></div>
     </div>
   </div>
   <div class="footer-bottom">
@@ -634,11 +622,31 @@ td:first-child { font-weight: 500; color: var(--text); }
   </div>
 </footer>
 
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
 const nav = document.getElementById('nav');
 const mobileBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), { passive: true });
+const scrollProgress = document.getElementById('scrollProgress');
+const backTop = document.getElementById('backTop');
+let lastScrollY = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 10);
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  if (scrollProgress) scrollProgress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+  if (backTop) backTop.classList.toggle('show', y > 700);
+  if (y > 360 && y > lastScrollY && !mobileMenu.classList.contains('open')) {
+    nav.classList.add('nav-hide');
+  } else {
+    nav.classList.remove('nav-hide');
+  }
+  lastScrollY = y;
+}, { passive: true });
+backTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
