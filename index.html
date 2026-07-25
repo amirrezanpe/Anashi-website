@@ -22,7 +22,7 @@
   "operatingSystem": "Web",
   "description": "AI front desk for medical and dental clinics. Answers patient calls 24/7 in 7 languages, confirms appointments, and organizes follow-ups in one dashboard.",
   "offers": { "@type": "Offer", "price": "399", "priceCurrency": "USD", "priceValidUntil": "2026-12-31", "description": "Plans starting at $399/month" },
-  "publisher": { "@type": "Organization", "name": "NashBoss Inc", "url": "https://www.nashboss.com", "email": "info@anashi.ai", "address": { "@type": "PostalAddress", "addressLocality": "Roseville", "addressRegion": "CA", "addressCountry": "US" } }
+  "publisher": { "@type": "Organization", "name": "NashBoss Inc", "url": "https://www.nashboss.com", "email": "info@nashboss.com", "address": { "@type": "PostalAddress", "addressLocality": "Roseville", "addressRegion": "CA", "addressCountry": "US" } }
 }
 </script>
 <link rel="icon" type="image/png" href="anashi-favicon.png">
@@ -1334,6 +1334,37 @@ th.cmp-anashi { font-weight: 800; color: var(--blue) !important; font-size: 14px
 .cmp-cost { font-weight: 800; color: var(--text); }
 .cmp-note-sm { display: block; font-size: 10px; font-weight: 500; color: var(--g400); margin-top: 2px; }
 
+/* Mobile comparison cards (replace the wide table on small screens) */
+.cmp-cards { display: none; }
+.cmp-card {
+  background: var(--white); border: 1px solid var(--g200);
+  border-radius: var(--r3); padding: 22px; box-shadow: var(--s1);
+}
+.cmp-card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; margin-bottom: 6px; flex-wrap: wrap;
+}
+.cmp-card-name { font-size: 17px; font-weight: 800; color: var(--text); }
+.cmp-card-cost { font-size: 13px; font-weight: 700; color: var(--g500); }
+.cmp-card-note { font-size: 11px; color: var(--g400); margin-bottom: 14px; }
+.cmp-card ul { list-style: none; display: flex; flex-direction: column; gap: 9px; padding: 0; margin: 0; }
+.cmp-card li { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--g600); line-height: 1.5; }
+.ci { flex-shrink: 0; font-weight: 800; width: 16px; text-align: center; }
+.ci-y { color: var(--green); }
+.ci-n { color: var(--g300); }
+.ci-p { color: var(--yellow); }
+.cmp-card-hero {
+  background: linear-gradient(180deg, #e0f7ff, #eff8ff);
+  border: none;
+  box-shadow: 0 10px 32px rgba(0,114,255,.18), 0 0 0 1.5px var(--blue);
+}
+.cmp-card-hero .cmp-card-name { color: var(--blue); }
+.cmp-card-hero li { color: var(--g700); }
+.cmp-card-badge {
+  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px;
+  background: var(--grad); color: #fff; padding: 4px 12px; border-radius: 100px;
+}
+
 /* ── INTEGRATIONS ────────────────────────── */
 #integrations {
   padding: 110px 0;
@@ -1473,10 +1504,23 @@ th.cmp-anashi { font-weight: 800; color: var(--blue) !important; font-size: 14px
     gap: 40px; min-height: auto;
   }
   .hero-right { display: none; }
-  .story-outer { grid-template-columns: 1fr; padding: 0 24px; gap: 0; }
-  .story-col-r { position: relative; height: auto; padding: 24px 0 40px; }
-  .panel { position: relative; top: 0; opacity: 1; pointer-events: auto; }
-  .panel:not(:first-child) { display: none; }
+  .story-outer { grid-template-columns: 1fr; padding: 0 18px; gap: 0; }
+  .story-col-l { padding: 8px 0 48px; }
+  .step { padding: 30px 0; }
+  .step-title { font-size: 22px; }
+  .step-desc { font-size: 14px; }
+  /* Widget becomes a compact sticky card pinned under the nav; the 7-step
+     scroll animation keeps working because steps scroll beneath it */
+  .story-col-r {
+    order: -1;
+    position: sticky; top: 62px; z-index: 30;
+    height: auto; padding: 12px 0 14px;
+    background: var(--g50);
+    display: flex; justify-content: center;
+    box-shadow: 0 16px 18px -16px rgba(0,0,0,.15);
+  }
+  .pw { max-width: 330px; min-height: 340px; }
+  .panel { padding: 14px; overflow-y: auto; }
   .feat-grid { grid-template-columns: 1fr; }
   .import-layout { grid-template-columns: 1fr; gap: 40px; }
   .plat-layout { grid-template-columns: 1fr; }
@@ -1496,6 +1540,8 @@ th.cmp-anashi { font-weight: 800; color: var(--blue) !important; font-size: 14px
   .roi-result { padding: 34px 24px; }
   .int-grid { grid-template-columns: 1fr; }
   .found-box { grid-template-columns: 1fr; gap: 40px; }
+  .cmp-scroll { display: none; }
+  .cmp-cards { display: grid; gap: 16px; }
 }
 @media (max-width: 560px) {
   .prob-grid { grid-template-columns: 1fr; }
@@ -2312,7 +2358,6 @@ th.cmp-anashi { font-weight: 800; color: var(--blue) !important; font-size: 14px
             </div>
             <div class="im-foot">
               <div class="im-count">247 appointments ready to import</div>
-              <button class="btn-import">Import &amp; Schedule AI Calls →</button>
             </div>
           </div>
         </div>
@@ -2392,6 +2437,66 @@ th.cmp-anashi { font-weight: 800; color: var(--blue) !important; font-size: 14px
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Mobile-only comparison cards -->
+    <div class="cmp-cards">
+      <div class="cmp-card cmp-card-hero reveal">
+        <div class="cmp-card-head">
+          <div class="cmp-card-name">Anashi</div>
+          <div class="cmp-card-badge">Recommended</div>
+        </div>
+        <div class="cmp-card-note"><strong>From $399/mo</strong></div>
+        <ul>
+          <li><span class="ci ci-y">✓</span>Answers 24/7, weekends &amp; holidays</li>
+          <li><span class="ci ci-y">✓</span>Speaks 7 languages, auto-detected</li>
+          <li><span class="ci ci-y">✓</span>Confirms appointments automatically</li>
+          <li><span class="ci ci-y">✓</span>Call summaries + recordings, every call</li>
+          <li><span class="ci ci-y">✓</span>Action items surfaced in one inbox</li>
+          <li><span class="ci ci-y">✓</span>Never sick, never on break, never quits</li>
+        </ul>
+      </div>
+      <div class="cmp-card reveal d1">
+        <div class="cmp-card-head">
+          <div class="cmp-card-name">Full-time hire</div>
+          <div class="cmp-card-cost">$3,500+/mo</div>
+        </div>
+        <div class="cmp-card-note">Salary, benefits, sick days, turnover</div>
+        <ul>
+          <li><span class="ci ci-n">✗</span>Business hours only — no nights or weekends</li>
+          <li><span class="ci ci-p">~</span>Multiple languages — rarely</li>
+          <li><span class="ci ci-p">~</span>Confirmations — manual dialing between tasks</li>
+          <li><span class="ci ci-p">~</span>Call notes — handwritten, often incomplete</li>
+          <li><span class="ci ci-n">✗</span>No automatic action items</li>
+        </ul>
+      </div>
+      <div class="cmp-card reveal d2">
+        <div class="cmp-card-head">
+          <div class="cmp-card-name">Answering service</div>
+          <div class="cmp-card-cost">$300–$1,000/mo</div>
+        </div>
+        <div class="cmp-card-note">Takes messages — can't book or confirm</div>
+        <ul>
+          <li><span class="ci ci-y">✓</span>Answers 24/7</li>
+          <li><span class="ci ci-n">✗</span>No multi-language support</li>
+          <li><span class="ci ci-n">✗</span>Can't confirm or book appointments</li>
+          <li><span class="ci ci-p">~</span>Messages only — no summaries or recordings</li>
+          <li><span class="ci ci-n">✗</span>No automatic action items</li>
+        </ul>
+      </div>
+      <div class="cmp-card reveal d3">
+        <div class="cmp-card-head">
+          <div class="cmp-card-name">Voicemail</div>
+          <div class="cmp-card-cost">"Free"</div>
+        </div>
+        <div class="cmp-card-note">Paid for in lost patients</div>
+        <ul>
+          <li><span class="ci ci-p">~</span>Records after hours — but 80% of callers hang up</li>
+          <li><span class="ci ci-n">✗</span>No languages, no answers, no help</li>
+          <li><span class="ci ci-n">✗</span>Can't confirm or book appointments</li>
+          <li><span class="ci ci-n">✗</span>No summaries, no action items</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -2696,7 +2801,7 @@ th.cmp-anashi { font-weight: 800; color: var(--blue) !important; font-size: 14px
       <a href="index.html" class="foot-brand-logo"><img src="anashi-logo.png" alt="Anashi"></a>
       <p class="foot-brand-desc">AI-powered front desk for medical clinics. Answer calls, confirm appointments, and organize patient communication in one dashboard.</p>
       <div class="foot-brand-meta">
-        Roseville, California &middot; <a href="mailto:info@anashi.ai">info@anashi.ai</a>
+        Roseville, California &middot; <a href="mailto:info@nashboss.com">info@nashboss.com</a>
       </div>
     </div>
     <div>
